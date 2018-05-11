@@ -3828,7 +3828,7 @@ var mainGC = function() {
                 });
 
                 console.log(data);
-                $('.draft-list').append('<a href="data:application/octet-stream;charset=utf-16le;base64,' + btoa(data) + '">Download Drafts as Fieldnotes</a>');
+                $('.draft-list').append('<a download="drafts.txt" href="data:application/octet-stream;charset=utf-16le;base64,' + btoa(data) + '">Download Drafts as Fieldnotes</a>');
             }
 
             var link = document.createElement("a");
