@@ -3789,6 +3789,54 @@ var mainGC = function() {
             template += '    </button>';
             template += '</div>';
             $("#draftItem").html(template);
+
+            function drafts_scrollAndCheck(){
+
+                var step_width = 5000;
+                initial_y = $(window).scrollTop();
+                $(window).scrollTop(initial_y+step_width);
+                new_y = $(window).scrollTop();
+                console.log($('.draft-list li').length);
+
+                if(initial_y != new_y){
+                    setTimeout(function() {
+                        drafts_scrollAndCheck()
+                    },1500);
+                }else{
+                    console.log('Done Scrolling Extracting...');
+                    extractDrafts();
+                }
+            }
+
+            function extractDrafts(){
+                
+                var data = "";
+
+                $('.draft-list li').each(function(n) {
+                    
+                    var gccode = $(this).find('.draft-icon a').attr('href').replace("https://coords.info/","");
+                    var date = $(this).find('.draft-content span.date').html() + "T" + $(this).find('.draft-content span.timestamp').html()+ ":00Z";
+                    var logtype = $(this).find('.draft-content dl dt').html().trim().replace(":","");
+                    var logtext = $(this).find('.draft-content p').html();
+
+                    // console.log('GC:' + gccode);
+                    // console.log('Date:' + date);
+                    // console.log('Logtyp:' + logtype);
+                    // console.log('Logtext:' + logtext);
+
+                    data += gccode + ',' + date + ',' + logtype + ',' + "\"" + logtext + "\"" + "\r\n";
+                });
+
+                console.log(data);
+                $('.draft-list').append('<a href="data:application/octet-stream;charset=utf-16le;base64,' + btoa(data) + '">Download Drafts as Fieldnotes</a>');
+            }
+
+            var link = document.createElement("a");
+            link.href = "#";
+            link.innerHTML = "Reload all Drafts and Download as Fieldnotes";
+            link.addEventListener("click", function(){drafts_scrollAndCheck()});
+            $('#draftsHub').before(link);
+
         } catch(e) {gclh_error("New drafts page:",e);}
     }
 
