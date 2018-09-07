@@ -4404,7 +4404,7 @@ var mainGC = function() {
                     
                     var gccode = $(this).find('.draft-icon a').attr('href').replace("https://coords.info/","");
                     var date = $(this).find('.draft-content span.date').html() + "T" + $(this).find('.draft-content span.timestamp').html()+ ":00Z";
-                    var logtype = $(this).find('.draft-content dl dt').html().trim().replace(":","");
+                    var logtype = $(this).find('.draft-content dl dt').not('.state').html().trim().replace(":","");
                     var logtext = $(this).find('.draft-content p').html();
 
                     // console.log('GC:' + gccode);
