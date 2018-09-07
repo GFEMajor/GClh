@@ -4396,6 +4396,12 @@ var mainGC = function() {
                 }
             }
 
+            function b64EncodeUnicode(str) {
+                return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                    return String.fromCharCode(parseInt(p1, 16))
+                }))
+            }
+
             function extractDrafts(){
                 
                 var data = "";
@@ -4416,7 +4422,7 @@ var mainGC = function() {
                 });
 
                 console.log(data);
-                $('.draft-list').append('<a download="drafts.txt" href="data:application/octet-stream;charset=utf-16le;base64,' + btoa(data) + '">Download Drafts as Fieldnotes</a>');
+                $('.draft-list').append('<a download="drafts.txt" href="data:application/octet-stream;charset=utf-16le;base64,' + b64EncodeUnicode(data) + '">Download Drafts as Fieldnotes</a>');
             }
 
             var link = document.createElement("a");
