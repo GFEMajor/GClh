@@ -5821,6 +5821,9 @@ var mainGC = function() {
         try {
             // IDs der Cache Logs Tables.
             var logsTab = '#cache_logs_table2, #cache_logs_table';
+
+            $('#cache_logs_table').hide();
+
             // To Top Link.
             var a = document.createElement("a");
             a.setAttribute("href", "#");
@@ -6130,6 +6133,20 @@ var mainGC = function() {
                     document.getElementById("gclh_vip_list_nofound").appendChild(span_loading);
                 }
 
+                function gclh_load_helper_first_logs(){
+                    
+                    // load first 30 logs
+                    var url = http + "://www.geocaching.com/seek/geocache.logbook?tkn=" + userToken + "&idx=1&num=30&decrypt=false";
+                    GM_xmlhttpRequest({
+                        method: "GET",
+                        url: url,
+                        onload: function(response) {
+                            add_first_logs(JSON.parse(response.responseText));
+                            gclh_load_helper(1);
+                        }
+                    });                    
+                }
+
                 function gclh_load_helper(count) {
                     var url = http + "://www.geocaching.com/seek/geocache.logbook?tkn=" + userToken + "&idx=" + curIdx + "&num=100&decrypt=false";
                     GM_xmlhttpRequest({
@@ -6181,6 +6198,33 @@ var mainGC = function() {
                     });
                 }
 
+                function add_first_logs(first_log_data) {
+                    // Disable scroll Function on Page.
+                    if (browser === "chrome" || browser === "firefox") injectPageScriptFunction(disablePageAutoScroll, "()");
+                    else disablePageAutoScroll();
+                    if (isTM === true) (document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).removeEventListener('DOMNodeInserted', loadListener);
+                    
+                    var tableContent = unsafeWindow.$("#cache_logs_table").after('<table id="cache_logs_table2" class="LogsTable NoBottomSpacing"> </table>').hide().children().remove();
+                    unsafeWindow.$(tableContent).find('tbody').children().remove();
+                    unsafeWindow.$('#cache_logs_table2').append(tableContent);
+                    $(tableContent).find('.log-row').remove();
+                    
+                    first_logs = logs.concat(first_log_data.data);
+
+                    var log_ids = [];
+
+                    for (var i = 0; i < num; i++) {
+                        if (first_logs[i]) {
+                            var newBody = unsafeWindow.$(document.createElement("TBODY"));
+                            unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(first_logs[i]).appendTo(newBody);
+                            unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).append(newBody.children());
+                        }
+                    }
+                    unsafeWindow.$('a.tb_images').fancybox({'type': 'image', 'titlePosition': 'inside'});
+                    
+                    setLinesColorInCacheListing();
+                }
+
                 function gclh_load_dataHelper() {
                     logs = new Array();
                     // Disable scroll Function on Page.
@@ -6189,14 +6233,14 @@ var mainGC = function() {
                     if (isTM === true) (document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).removeEventListener('DOMNodeInserted', loadListener);
                     // Hide initial Logs.
                     var tbodys = document.getElementById("cache_logs_table").getElementsByTagName("tbody");
-                    if (tbodys.length > 0) {
-                        var shownLogs = tbodys[0].children.length;
-                        if (shownLogs > 0 && num < shownLogs) num = shownLogs;
-                    }
-                    var tableContent = unsafeWindow.$("#cache_logs_table").after('<table id="cache_logs_table2" class="LogsTable NoBottomSpacing"> </table>').hide().children().remove();
-                    unsafeWindow.$(tableContent).find('tbody').children().remove();
-                    unsafeWindow.$('#cache_logs_table2').append(tableContent);
-                    $(tableContent).find('.log-row').remove();
+                    // if (tbodys.length > 0) {
+                    //     var shownLogs = tbodys[0].children.length;
+                    //     if (shownLogs > 0 && num < shownLogs) num = shownLogs;
+                    // }
+                    // var tableContent = unsafeWindow.$("#cache_logs_table").after('<table id="cache_logs_table2" class="LogsTable NoBottomSpacing"> </table>').hide().children().remove();
+                    // unsafeWindow.$(tableContent).find('tbody').children().remove();
+                    // unsafeWindow.$('#cache_logs_table2').append(tableContent);
+                    // $(tableContent).find('.log-row').remove();
                     for (var z = 1; z <= numPages; z++) {
                         var all_ids = new Array();
                         // console.log(data[z].data);
@@ -6306,9 +6350,13 @@ var mainGC = function() {
                     for (var i = 0; i < num; i++) {
                         if (logs[i]) {
                             log_ids.push(logs[i].LogID);
-                            var newBody = unsafeWindow.$(document.createElement("TBODY"));
-                            unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(logs[i]).appendTo(newBody);
-                            unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).append(newBody.children());
+
+                            // only add, if we have not added it before via "add_first_logs"
+                            if(logs[i].LogID + ":" + unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).find('.l-' + logs[i].LogID).length == 0){
+                                var newBody = unsafeWindow.$(document.createElement("TBODY"));
+                                unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(logs[i]).appendTo(newBody);
+                                unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).append(newBody.children());
+                            }
                         }
                     }
                     unsafeWindow.$('a.tb_images').fancybox({'type': 'image', 'titlePosition': 'inside'});
@@ -6324,7 +6372,10 @@ var mainGC = function() {
                     }
                     setLinesColorInCacheListing();
                 }
-                gclh_load_helper(1);
+                // gclh_load_helper(1);
+
+                gclh_load_helper_first_logs();
+
             }
             if (settings_show_all_logs) {
                 var logsCount = parseInt(settings_show_all_logs_count);
