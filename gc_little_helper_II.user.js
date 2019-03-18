@@ -6065,6 +6065,10 @@ var mainGC = function() {
                     document.getElementById("gclh_vip_list_nofound").appendChild(span_loading);
                 }
 
+                logs = new Array();
+                // Hide initial Logs.
+                $('#cache_logs_table').find('tbody').children().remove();
+
                 function gclh_load_helper(count) {
                     var url = http + "://www.geocaching.com/seek/geocache.logbook?tkn=" + userToken + "&idx=" + curIdx + "&num=100&decrypt=false";
                     GM_xmlhttpRequest({
@@ -6074,7 +6078,21 @@ var mainGC = function() {
                             requestCount--;
                             var dataElement = JSON.parse(response.responseText);
                             data[dataElement.pageInfo.idx] = dataElement;
+
+                            var json = data[dataElement.pageInfo.idx];
+                            logs = logs.concat(json.data);
+                            
                             if (numPages == 1) {
+                                for (var i = 0; i < 30; i++) {
+                                    if (logs[i]) {
+                                        var newBody = unsafeWindow.$(document.createElement("TBODY"));
+                                        unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(logs[i]).appendTo(newBody);
+                                        unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).append(newBody.children());
+                                    }
+                                }
+                                unsafeWindow.$('a.tb_images').fancybox({'type': 'image', 'titlePosition': 'inside'});
+                                setLinesColorInCacheListing();
+
                                 numPages = data[count].pageInfo.totalPages;
                                 for (curIdx = 2; curIdx <= numPages; curIdx++) {
                                     requestCount++;
@@ -6087,24 +6105,12 @@ var mainGC = function() {
                 }
 
                 function gclh_load_dataHelper() {
-                    logs = new Array();
                     // Disable scroll Function on Page.
                     if (browser === "chrome" || browser === "firefox") injectPageScriptFunction(disablePageAutoScroll, "()");
                     else disablePageAutoScroll();
                     if (isTM === true) (document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).removeEventListener('DOMNodeInserted', loadListener);
-                    // Hide initial Logs.
-                    var tbodys = document.getElementById("cache_logs_table").getElementsByTagName("tbody");
-                    if (tbodys.length > 0) {
-                        var shownLogs = tbodys[0].children.length;
-                        if (shownLogs > 0 && num < shownLogs) num = shownLogs;
-                    }
-                    var tableContent = unsafeWindow.$("#cache_logs_table").after('<table id="cache_logs_table2" class="LogsTable NoBottomSpacing"> </table>').hide().children().remove();
-                    unsafeWindow.$(tableContent).find('tbody').children().remove();
-                    unsafeWindow.$('#cache_logs_table2').append(tableContent);
-                    $(tableContent).find('.log-row').remove();
                     for (var z = 1; z <= numPages; z++) {
                         var json = data[z];
-                        logs = logs.concat(json.data);
                         for (var i = 0; i < json.data.length; i++) {
                             var user = json.data[i].UserName;
                             if (settings_show_vip_list) {
@@ -6131,14 +6137,6 @@ var mainGC = function() {
                     gclh_filter(logs);
                     gclh_search(logs);
 
-                    for (var i = 0; i < num; i++) {
-                        if (logs[i]) {
-                            var newBody = unsafeWindow.$(document.createElement("TBODY"));
-                            unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(logs[i]).appendTo(newBody);
-                            unsafeWindow.$(document.getElementById("cache_logs_table2") || document.getElementById("cache_logs_table")).append(newBody.children());
-                        }
-                    }
-                    unsafeWindow.$('a.tb_images').fancybox({'type': 'image', 'titlePosition': 'inside'});
                     gclh_dynamic_load(logs, num);
                     if (settings_show_vip_list) {
                         gclh_build_vip_list();
