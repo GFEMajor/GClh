@@ -5763,6 +5763,12 @@ var mainGC = function() {
     overwrite_log_template:
     if (settings_load_logs_with_gclh && is_page("cache_listing") && !document.getElementById("ctl00_divNotSignedIn") && document.getElementById('tmpl_CacheLogRow')) {
         try {
+
+            var logs = new Array();
+            // Hide initial Logs.
+            $('#cache_logs_table').find('tbody').children().remove();
+
+
             // IDs der Cache Logs Tables.
             var logsTab = '#cache_logs_table2, #cache_logs_table';
             // To Top Link.
@@ -5882,6 +5888,7 @@ var mainGC = function() {
                         if (!isBusy && !document.getElementById("gclh_all_logs_marker")) {
                             isBusy = true;
                             $("#pnlLazyLoad").show();
+                            console.log("gclh_dynamic_load from " + global_num);
                             for (var i = 0; i < 10; i++) {
                                 if (global_logs[global_num]) {
                                     var newBody = unsafeWindow.$(document.createElement("TBODY"));
@@ -5908,6 +5915,7 @@ var mainGC = function() {
                     setTimeout(function() {
                         if (logs) {
                             $(logsTab).find('tbody').children().remove();
+                            console.log("gclh_load_all_logs...");
                             for (var i = 0; i < logs.length; i++) {
                                 if (logs[i]) {
                                     var newBody = unsafeWindow.$(document.createElement("TBODY"));
@@ -5946,6 +5954,7 @@ var mainGC = function() {
                     else var vip_owner = "#";
                     if (!logs) return false;
                     $(logsTab).find('tbody').children().remove();
+                    console.log("Filter logs....");
                     for (var i = 0; i < logs.length; i++) {
                         if (logs[i] && (logs[i].LogType == log_type || (log_type == "VIP" && (in_array(logs[i].UserName, global_vips) || logs[i].UserName == vip_owner)))) {
                             var newBody = unsafeWindow.$(document.createElement("TBODY"));
@@ -6013,6 +6022,7 @@ var mainGC = function() {
                     if (!search_text) return false;
                     var regexp = new RegExp("(" + search_text + ")", "i");
                     $(logsTab).find('tbody').children().remove();
+                    console.log("Searching Logs....");
                     for (var i = 0; i < logs.length; i++) {
                         if (logs[i] && (logs[i].UserName.match(regexp) || logs[i].LogText.match(regexp))) {
                             var newBody = unsafeWindow.$(document.createElement("TBODY"));
@@ -6051,7 +6061,6 @@ var mainGC = function() {
             function gclh_load_logs(num) {
                 var data = new Array();
                 var requestCount = 1;
-                var logs = new Array();
                 var numPages = 1;
                 var curIdx = 1;
                 if (document.getElementById("gclh_vip_list")) {
@@ -6065,12 +6074,9 @@ var mainGC = function() {
                     document.getElementById("gclh_vip_list_nofound").appendChild(span_loading);
                 }
 
-                logs = new Array();
-                // Hide initial Logs.
-                $('#cache_logs_table').find('tbody').children().remove();
-
                 function gclh_load_helper(count) {
                     var url = http + "://www.geocaching.com/seek/geocache.logbook?tkn=" + userToken + "&idx=" + curIdx + "&num=100&decrypt=false";
+                    console.log('Loading: ' + url);
                     GM_xmlhttpRequest({
                         method: "GET",
                         url: url,
@@ -6083,7 +6089,9 @@ var mainGC = function() {
                             logs = logs.concat(json.data);
                             
                             if (numPages == 1) {
-                                for (var i = 0; i < 30; i++) {
+                                console.log("Adding initial Logs 0 bis " + num);
+                                global_num = num;
+                                for (var i = 0; i < num; i++) {
                                     if (logs[i]) {
                                         var newBody = unsafeWindow.$(document.createElement("TBODY"));
                                         unsafeWindow.$("#tmpl_CacheLogRow_gclh").tmpl(logs[i]).appendTo(newBody);
