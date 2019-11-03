@@ -1,3 +1,9 @@
+<a href="#v0918" title="GClh II version 0.9.18 (23.05.2019)">v0.9.18</a> &nbsp;
+<a href="#v0917" title="GClh II version 0.9.17 (10.04.2019)">v0.9.17</a> &nbsp;
+<a href="#v0916" title="GClh II version 0.9.16 (13.02.2019)">v0.9.16</a> &nbsp;
+<a href="#v0915" title="GClh II version 0.9.15 (18.01.2019)">v0.9.15</a> &nbsp;
+<a href="#v0914" title="GClh II version 0.9.14 (21.12.2018)">v0.9.14</a> &nbsp;
+<a href="#v0913" title="GClh II version 0.9.13 (09.10.2018)">v0.9.13</a> &nbsp;
 <a href="#v0912" title="GClh II version 0.9.12 (04.09.2018)">v0.9.12</a> &nbsp;
 <a href="#v0911" title="GClh II version 0.9.11 (25.08.2018)">v0.9.11</a> &nbsp;
 <a href="#v0910" title="GClh II version 0.9.10 (11.08.2018)">v0.9.10</a> &nbsp;
@@ -43,6 +49,345 @@
 
 
 ---
+## v0.9.18:
+<ul>
+	<li>
+		<strong>New:</strong> Integrate reviewer/publisher in VIP lists. [<a href="https://github.com/2Abendsegler/GClh/issues/1011" title="Issue 1011">1011</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+		You can now show the reviewer/publisher of the cache in your VIP list: <br>
+		<img src="../images/0.9.18/Screen01.png" alt="Screen01.png"><br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_reviewer_as_vip" title="Link to your GClh Config">Settings -> Listing:<br>
+		<img src="../images/0.9.18/Screen03.png" alt="Screen03.png"></a><br>
+	</li>
+	<li>
+		<strong>New:</strong> "Great story" and "Helpful" are not longer deleted by GClh. [<a href="https://github.com/2Abendsegler/GClh/issues/663" title="Issue 663">663</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+		If you haven't noticed yet, since about 1 year, Groundspeak is testing a new feature where you can tag a log as "Great Story" or "Helpful" and you can sort the logs by the rating of the users.<br>
+		This feature is only available in Canada and Norway at this time. Since today, GClh is deleting these so called "Upvote"-Buttons, because we replace the log template. But from now on, GClh no longer deletes those buttons and you can use them to rate the logs and sort them by a certain rating.<br>
+		If you want to know more about this topic, here is a blogpost from Groundspeak: <a href="https://www.geocaching.com/blog/2018/05/faq-log-upvotes/" title="Log Upvotes">here</a><br>
+		And this is how it looks like:<br>
+		<img src="../images/0.9.18/Screen02.png" alt="Screen02.png"><br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Show Google-Maps Link on Cache Listing Page does not work. [<a href="https://github.com/2Abendsegler/GClh/issues/1025" title="Issue 1025">1025</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> "Open Trackables" in Draft Mode not working consistently. [<a href="https://github.com/2Abendsegler/GClh/issues/1024" title="Issue 1024">1024</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> The "edit log" - functionality integrates the signature once again (Old log page). [<a href="https://github.com/2Abendsegler/GClh/issues/1023" title="Issue 1023">1023</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Geonames in standard configuration as first service. [<a href="https://github.com/2Abendsegler/GClh/issues/1030" title="Issue 1030">1030</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+</ul>
+(23.05.2019)<br>
+released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a><br>
+<br>
+
+---
+## v0.9.17:
+<ul>
+	<li>
+		<strong>New:</strong> We added a Note of Thanks to honor all the contributors to this project. [<a href="https://github.com/2Abendsegler/GClh/issues/1004" title="Issue 1004">1004</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		You can access it via the config screen: <br>
+		<img src="../images/0.9.17/Screen02.png" alt="Screen02.png"><br>
+	</li>
+	<li>
+		<strong>New:</strong> Show log totals symbols at the top of the cache listing. [<a href="https://github.com/2Abendsegler/GClh/issues/1009" title="Issue 1009">1009</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler" >2Abendsegler</a>]<br>
+		<img src="../images/0.9.17/Screen03.png" alt="Screen03.png"><br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_log_totals" title="Link to your GClh Config" >Settings -> Listing:<br>
+		<img src="../images/0.9.17/Screen04.png" alt="Screen04.png"></a><br>
+	</li>
+	<li>
+		<strong>New:</strong> Replace initial Logs faster with GClh Template  [<a href="https://github.com/2Abendsegler/GClh/issues/995" title="Issue 995">995</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010" >Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Logtemplate not inserted (Chrome / Safari)[<a href="https://github.com/2Abendsegler/GClh/issues/962" title="Issue 962">962</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+		With fixing this bug, the insertion of a log Template is now also working on Android <br/>
+	</li>
+	<li>
+		<strong>Fix:</strong> Message Center - Receiver does not update if Message Center is accessed directly [<a href="https://github.com/2Abendsegler/GClh/issues/901" title="Issue 901">901</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> "Past Events" in bookmarklists and watchlists don't work with the new event time [<a href="https://github.com/2Abendsegler/GClh/issues/997" title="Issue 997">997</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Show ignore list and hide area Lists in dashboard doesn't work [<a href="https://github.com/2Abendsegler/GClh/issues/999" title="Issue 999">999</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Search field in header doesn't work with a location name [<a href="https://github.com/2Abendsegler/GClh/issues/1002" title="Issue 1002">1002</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> BRouter has a new URL schema [<a href="https://github.com/2Abendsegler/GClh/issues/1007" title="Issue 1007">1007</a> / <a href="https://www.geocaching.com/profile/?u=RadlerAndi" title="Thanks to RadlerAndi">RadlerAndi</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Missing button create pocket query on foreign bookmarklists. [<a href="https://github.com/2Abendsegler/GClh/issues/1012" title="Issue 1012">1012</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Build back old designed page list of bookmark lists and Rename link list of bookmark lists to new designed page. [<a href="https://github.com/2Abendsegler/GClh/issues/1015" title="Issue 1015">1015</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> On Google Maps page icon to GC Map is missing. [<a href="https://github.com/2Abendsegler/GClh/issues/1018" title="Issue 1018">1018</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> In dashboards sidebar the link to "Ignore List" comes also in chapter "Linklist" and "Default Links". [<a href="https://github.com/2Abendsegler/GClh/issues/1020" title="Issue 1020">1020</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+</ul>
+(10.04.2019)<br>
+released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a><br>
+<br>
+
+---
+## v0.9.16:
+<ul>
+	<li>
+		<strong>New:</strong> Show log counter when opening cache listing. [<a href="https://github.com/2Abendsegler/GClh/issues/954" title="Issue 954">954</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		<img src="../images/0.9.16/Screen01.jpg" alt="Screen01.jpg"><br>
+		The functionality to show log counter is not new. New is only the possibility to activate the display by default without pushing a button.<br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_log_counter_but" title="Link to your GClh Config">Settings -> Listing:<br>
+		<img src="../images/0.9.16/Screen02.jpg" alt="Screen02.jpg"></a><br>
+			If you want to use it, you have to <a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_log_counter_but" title="Link to your GClh Config">activate the parameter</a>.<br>
+		<br>
+	</li>
+	<li>
+		<strong>New:</strong> Display difficulty and terrain in bookmark lists. [<a href="https://github.com/2Abendsegler/GClh/issues/975" title="Issue 975">975</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+		<img src="../images/0.9.16/Screen03.gif" alt="Screen03.gif"><br>
+		We changed the function of showing corrected coordinates to "Add additional information" and added difficulty and terrain for each cache.<br>
+		<br>
+	</li>
+	<li>
+		<strong>New:</strong> Add Link to "Unpublished Hides" to Linklist [<a href="https://github.com/2Abendsegler/GClh/issues/982" title="Issue 982">982</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#llb#gclh_LinkListElement_74" title="Link to your GClh Config">Settings -> Linklist / Navigation:<br>
+		<img src="../images/0.9.16/Screen04.jpg" alt="Screen04.jpg"></a><br>
+		<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Prevent unwanted line breaks in GClh Config. [<a href="https://github.com/2Abendsegler/GClh/issues/956" title="Issue 956">956</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Refine newer log page on small devices. [<a href="https://github.com/2Abendsegler/GClh/issues/957" title="Issue 957">957</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Hide sidebar on map doesn't work with open in new tab. [<a href="https://github.com/2Abendsegler/GClh/issues/967" title="Issue 967">967</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error on shared bookmark lists if no home coordinates are known. [<a href="https://github.com/2Abendsegler/GClh/issues/970" title="Issue 970">970</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Map error with additional layer and additional popup if Leaflet is not selected. [<a href="https://github.com/2Abendsegler/GClh/issues/969" title="Issue 969">969</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>, <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Geonames elevation error with more than 20 coordinates. [<a href="https://github.com/2Abendsegler/GClh/issues/976" title="Issue 976">976</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Save As Pocket Query - Default settings for new pocket queries do not work. [<a href="https://github.com/2Abendsegler/GClh/issues/978" title="Issue 978">978</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Message Center: cacher name in greeting doesn't change on click on another geocacher [<a href="https://github.com/2Abendsegler/GClh/issues/901" title="Issue 901">901</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+</ul>
+(13.02.2019)<br>
+released by <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a><br>
+<br>
+
+---
+## v0.9.15:
+<ul>
+	<li>
+		<strong>New:</strong> <img src="../images/mozilla_firefox_android_logo_small.png" title="Android / Mozilla Firefox" alt="Android / Mozilla Firefox"> How you install GClh on Android devices. [<a href="https://github.com/2Abendsegler/GClh/issues/783" title="Issue 783">783</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		Extension of the <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/tips_installation.md#android_firefox_en" title="Link to Tips for the installation of GC little helper II">Tips for the installation of GC little helper II (english)</a> / <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/tips_installation.md#android_firefox_de" title="Link to Tips for the installation of GC little helper II">(german)</a>.<br>
+		Extension of the FAQ:<br>
+		- <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/faq.md#4-en" title="Link to FAQ">Hints for using on Android devices (english)</a> / <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/faq.md#4-de" title="Link to FAQ">(german)</a>.<br>
+		- <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/faq.md#3-en" title="Link to FAQ">GClh doesn't start (english)</a> / <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/faq.md#3-de" title="Link to FAQ">(german)</a>.<br>
+		<br>
+	</li>
+	<li>
+		<strong>New:</strong> Show elevations also with Geonames. [<a href="https://github.com/2Abendsegler/GClh/issues/920" title="Issue 920">920</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		Because the number of calls to the Google Elevation API is limited and the Open-Elevation API is very slow and sometimes providing erroneous data, the Geonames API has also been implemented. The Geonames API is very fast. As before, a first and a second service can be selected.<br>
+		We recommend the following settings.<br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_elevation_of_waypoints" title="Link to your GClh Config">Settings -> Listing:<br>
+			<img src="../images/0.9.15/Screen01.jpg" alt="Screen01.jpg"></a><br>
+		<br>
+	</li>
+	<li>
+		<strong>New:</strong> Show elevation on additional popup on the map. [<a href="https://github.com/2Abendsegler/GClh/issues/802" title="Issue 802">802</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		<img src="../images/0.9.15/Screen02.jpg" alt="Screen02.jpg"><br>
+		It only works if elevations for waypoints and listing coordinates is activated and at least a first service is named there.<br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_show_elevation_of_waypoints" title="Link to your GClh Config">Settings -> Listing:<br>
+			<img src="../images/0.9.15/Screen03.jpg" alt="Screen03.jpg"></a><br>
+		<br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> On favorites page no line-breaks in column location. [<a href="https://github.com/2Abendsegler/GClh/issues/926" title="Issue 926">926</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		<a href="https://www.geocaching.com/my/favorites.aspx" title="Link to your Favorites">
+			<img src="../images/0.9.15/Screen04.jpg" alt="Screen04.jpg"><br>
+			<img src="../images/0.9.15/Screen05.jpg" alt="Screen05.jpg"></a><br>
+		It is only used with a page width of at least 1000 pixels.<br>
+		<a href="https://www.geocaching.com/my/#GClhShowConfig#a#settings_new_width" title="Link to your GClh Config">Settings -> Global:<br>
+			<img src="../images/0.9.15/Screen06.jpg" alt="Screen06.jpg"></a><br>
+		<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Wrong log's date in "latest logs" section of the map pop-up. [<a href="https://github.com/2Abendsegler/GClh/issues/922" title="Issue 922">922</a> / <a href="https://www.geocaching.com/profile/?u=Ruko2010" title="Thanks to Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Prevention line break caused by long cache name in map popup, works only for the first cache. [<a href="https://github.com/2Abendsegler/GClh/issues/924" title="Issue 924">924</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+		(It is only implemented for browser Mozilla Firefox.)<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Button "Mark Caches with Corr. Coords" can be pressed several times. [<a href="https://github.com/2Abendsegler/GClh/issues/925" title="Issue 925">925</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Button "Mark Caches with Corr. Coords" doesn't work on foreign bookmarklists. [<a href="https://github.com/2Abendsegler/GClh/issues/928" title="Issue 928">928</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Link to Gallery on friends page does not work for new designed profile page. [<a href="https://github.com/2Abendsegler/GClh/issues/937" title="Issue 937">937</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Destroyed style of icons on search page for manage filter sets. [<a href="https://github.com/2Abendsegler/GClh/issues/939" title="Issue 939">939</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error on friends page in section Pending Friend Requests. [<a href="https://github.com/2Abendsegler/GClh/issues/941" title="Issue 941">941</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error on emtpy trackable pages. [<a href="https://github.com/2Abendsegler/GClh/issues/943" title="Issue 943">943</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> From "Friend League" to "Leaderboard". [<a href="https://github.com/2Abendsegler/GClh/issues/932" title="Issue 932">932</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Link in dashboard to ignore list does not work with right mouse. [<a href="https://github.com/2Abendsegler/GClh/issues/851" title="Issue 851">851</a> / <a href="https://www.geocaching.com/profile/?u=2Abendsegler" title="Thanks to 2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+</ul>
+(18.01.2019)<br>
+released by <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a><br>
+<br>
+
+---
+## v0.9.14:
+<ul>
+	<li>
+		<strong>Improvement:</strong> Save Personal Cache Note in cache listing with F2 key: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/907">#907</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+		<img src="../images/0.9.14/Screen03.jpg" alt="Screen03.jpg"><br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> Process icon "Copy GC Code to clipboard" also on additional Popup in maps: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/911">#911</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+		<img src="../images/0.9.14/Screen01.jpg" alt="Screen01.jpg"><br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> Past events error in foreign bookmarklists and in watchlist: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/898">#898</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+		To recognize and to select past events in bookmark lists and in the watchlist, the cache listings of the events will be read additionally. If you do not want this, the option can be disabled.<br>
+		<img src="../images/0.9.14/Screen02.jpg" alt="Screen02.jpg"><br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Bookmark List: Create PQ-Button disappears in Compact Layout: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/891">#891</a> / Thanks <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error while generating Message Icons on own Caches: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/889">#889</a> / Thanks <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Log Templates do not work when Owner Name contains a Single Quote: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/902">#902</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Unification of line spacing and font size of "Add to list" popup: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/905">#905</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Log inline and PMO log inline on listing do not work: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/888">#888</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Small map in Listing does not show up: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/865">#865</a> / Thanks <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a>]<br>
+		Small Map in Listing and while creating a Pocketquery is now configurable. You can choose the map layer and the zoom:<br>
+		<img src="../images/0.9.14/Screen04.png" alt="Screen04.png"><br>
+		<img src="../images/0.9.14/Screen05.png" alt="Screen05.png"><br>
+		<img src="../images/0.9.14/Screen06.png" alt="Screen06.png"><br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> Preventing twitching on the additional map popup: [Issue <a href="https://github.com/2Abendsegler/GClh/issues/916">#916</a> / Thanks <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a>]<br>
+	</li>
+</ul>
+(21.12.2018)<br>
+released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a><br>
+<br>
+
+---
+## v0.9.13:
+<ul>
+	<li>
+		<strong>New:</strong> Project-GC - PQ-Splitter: You can now configurate how often the querys should run and choose between primary and secondary Output Email [Issue <a href="https://github.com/2Abendsegler/GClh/issues/861">#861</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the implementation.<br>
+		<img src="../images/0.9.13/Screen01.png" alt="Screen01.png"><br>
+  </li>
+  <li>
+		<strong>New:</strong> Added VIP/VUP and Message Icon behind Usernames on "Read the audit Log"-page (this page is only visible for own <i>premium caches</i>) [Issue <a href="https://github.com/2Abendsegler/GClh/issues/874">#874</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the implementation.<br>
+		<img src="../images/0.9.13/Screen02.png" alt="Screen02.png"><br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> PQ-Splitter (Project GC) now only opens 5 Popups at a time to reduce the browsers resource consumption [Issue <a href="https://github.com/2Abendsegler/GClh/issues/842">#842</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the implementation.<br>
+	</li>
+	<li>
+		<strong>Improvement:</strong> Selection in Message Center and Profile Settings is not visible in Firefox [Issue <a href="https://github.com/2Abendsegler/GClh/issues/878">#878</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the implementation.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error in Nearest List, PQ, Recently viewed because of missing last column "Send to GPS" [Issue <a href="https://github.com/2Abendsegler/GClh/issues/844">#844</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Edit and Image Links to own caches doesn't shown [Issue <a href="https://github.com/2Abendsegler/GClh/issues/810">#810</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Loading logs do not stop after click to button show all logs [Issue <a href="https://github.com/2Abendsegler/GClh/issues/825">#825</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Disable Loading Logs by GC on Product Listing Page [Issue <a href="https://github.com/2Abendsegler/GClh/issues/832">#832</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> PQ error because of missing last column "Send to GPS". [Issue <a href="https://github.com/2Abendsegler/GClh/issues/844">#844</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=2Abendsegler">2Abendsegler</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Improved Elevation Service Error Handling [Issue <a href="https://github.com/2Abendsegler/GClh/issues/847">#847</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Adapt the height of the Personal Cache Note does not work properly [Issue <a href="https://github.com/2Abendsegler/GClh/issues/848">#848</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Added Color in Configuration and Documentation in Changelog for new parameter "Show GPSVisualizer" introduced in 0.9.12 [Issues <a href="https://github.com/2Abendsegler/GClh/issues/849">#849</a>, <a href="https://github.com/2Abendsegler/GClh/issues/850">#850</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> and <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fixes.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Preselection map for BRouter does not work [Issue <a href="https://github.com/2Abendsegler/GClh/issues/852">#852</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Error on Profile (Settings) [Issue <a href="https://github.com/2Abendsegler/GClh/issues/854">#854</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Need to scroll down to see image description in pop-up mode [Issue <a href="https://github.com/2Abendsegler/GClh/issues/862">#862</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Flopps Maps Link in Listing: Link to Google Maps Satellite not working [Issue <a href="https://github.com/2Abendsegler/GClh/issues/868">#868</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+	<li>
+		<strong>Fix:</strong> Showing Weekday throws Error on unpublished Events [Issue <a href="https://github.com/2Abendsegler/GClh/issues/876">#876</a>]<br>
+		Thanks to <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a> for the fix.<br>
+	</li>
+</ul>
+(09.10.2018)<br>
+released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a><br>
+<br>
+
+
+---
 ## v0.9.12:
 <ul>
 	<li>
@@ -56,6 +401,7 @@
 		<strong>New:</strong> Added GPSVisualizer as an additional map service [Issue <a href="https://github.com/2Abendsegler/GClh/issues/807">#807</a>]<br>
 		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFox">CachingFox</a> for the implementation.<br>
 		<img src="../images/0.9.12/Screen01.png" alt="Screen01.png"><br>
+		<img src="../images/0.9.12/Screen09.png" alt="Screen09.png"><br>
 	</li>
 	<li>
 		<strong>New:</strong> Adapt the height of the edit field 'Personal Cache Note' to show the complete note [Issues <a href="https://github.com/2Abendsegler/GClh/issues/821">#821</a>, <a href="https://github.com/2Abendsegler/GClh/issues/816">#816</a>]<br>
@@ -451,7 +797,7 @@ released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a
 ## v0.9.4:
 <ul>
 	<li>
-		<strong>New:</strong> Enhanced the map popup for a cache. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/554">#554</a>, <a href="https://github.com/2Abendsegler/GClh/issues/623">#623</a>]<br />
+		<strong>New:</strong> Enhanced the map popup for a cache. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/554">#554</a>, <a href="https://github.com/2Abendsegler/GClh/issues/623">#623</a>]<br>
 		Additional Informations displayed:
 		<ul>
 			<li>Number of different log types</li>
@@ -465,7 +811,7 @@ released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a
 		<img src="../images/v0.9.4_Screen02.png" alt="v0.9.4_Screen02.png"><br>
 	</li>
 	<li>
-		<strong>New:</strong> Sorting of Souvenirs. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/624">#624</a>]<br />
+		<strong>New:</strong> Sorting of Souvenirs. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/624">#624</a>]<br>
 		Available sorting methods:
 		<ul>
 			<li>Sort by Date, latest first</li>
@@ -478,14 +824,14 @@ released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a
 		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the idea and the implementation.<br>
 	</li>
 	<li>
-		<strong>New:</strong> You can now choose between Google Elevation Service and Open Elevation Service for Elevation-Data. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/621">#621</a>]<br />
+		<strong>New:</strong> You can now choose between Google Elevation Service and Open Elevation Service for Elevation-Data. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/621">#621</a>]<br>
 		You can choose the order of the services. The secound method will be used as Fall-Back if the first encounters an error or the data is missing.
 		<br>
 		<img src="../images/v0.9.4_Screen04.png" alt="v0.9.4_Screen04.png"><br>
 		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the idea and the implementation.<br>
 	</li>
 	<li>
-		<strong>New:</strong> Improvements of the new Draft-Page. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/620">#620</a>]<br />
+		<strong>New:</strong> Improvements of the new Draft-Page. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/620">#620</a>]<br>
 		<ul>
 			<li>the Logtype (e.g. "Found-it", "Write-Note", etc.) is now displayed as Icon next to the cacheicon</li>
 			<li>new link icon on the right to go directly to the cache listing (instead if the "new-log-page")</li>
@@ -497,7 +843,7 @@ released by <a href="https://www.geocaching.com/profile/?u=Ruko2010">Ruko2010</a
 		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the idea and the implementation.<br>
 	</li>
 	<li>
-		<strong>New:</strong> We now have a Documentation, how you can develop Userscripts like GClh easily with Tampermonkey and Github. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/619">#619</a>]<br />
+		<strong>New:</strong> We now have a Documentation, how you can develop Userscripts like GClh easily with Tampermonkey and Github. [Issue <a href="https://github.com/2Abendsegler/GClh/issues/619">#619</a>]<br>
 		You can find it here: <a href="https://github.com/2Abendsegler/GClh/blob/master/docu/development-tampermonkey.md">Development with Tampermonkey</a><br>
 		Thanks to <a href="https://www.geocaching.com/profile/?u=CachingFoX">CachingFoX</a> for the idea and the implementation.<br>
 	</li>
