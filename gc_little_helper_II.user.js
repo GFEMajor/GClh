@@ -874,6 +874,12 @@ var mainPGC = function() {
                 error_text = 'No Country/Region selected.';
             }
 
+            if($('#typeselect').val() != null){
+                cachetype = $('#typeselect').val();
+            }else{
+                cachetype = [];
+            }
+
             if($('#sizeselect').val() != null){
                 cachesize = $('#sizeselect').val();
             }else{
@@ -982,6 +988,7 @@ var mainPGC = function() {
                                         n: pq_name,
                                         t: type,
                                         s: name,
+                                        ct: cachetype.join("_"),
                                         cs: cachesize.join("_"),
                                         c: cache_count,
                                         ho: how_often,
@@ -4563,6 +4570,66 @@ var mainGC = function() {
                         }
 
                         $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
+                    }
+                }
+
+                var cachetype = findGetParameter('ct');
+                cachetype = cachetype.split(/_/);
+
+                if(cachetype.length >= 1){
+                    for (var i = 0; i < cachetype.length; i++) {
+                        switch (cachetype[i]){
+                            case "Cache+In+Trash+Out+Event":
+                            case "Event+Cache":
+                            case "Giga-Event+Cache":
+                            case "Groundspeak+Block+Party":
+                            case "Mega-Event+Cache":
+                            case "Lost+and+Found+Event+Cache":
+                            case "Groundspeak+Lost+and+Found+Celebration":
+                                $('#ctl00_ContentBody_cbTaxonomy_4').attr('checked', true);
+                            break;
+                            case "Earthcache":
+                                $('#ctl00_ContentBody_cbTaxonomy_8').attr('checked', true);
+                            break;
+                            case "GPS+Adventures+Exhibit":
+                                $('#ctl00_ContentBody_cbTaxonomy_9').attr('checked', true);
+                            break;
+                            case "Letterbox+Hybrid":
+                                $('#ctl00_ContentBody_cbTaxonomy_3').attr('checked', true);
+                            break;
+                            case "Locationless+(Reverse)+Cache":
+                                // Not mapped
+                            break;
+                            case "Multi-cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_1').attr('checked', true);
+                            break;
+                            case "Project+APE+Cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_6').attr('checked', true);
+                            break;
+                            case "Traditional+Cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_0').attr('checked', true);
+                            break;
+                            case "Unknown+Cache":
+                            case "Groundspeak+HQ":
+                                $('#ctl00_ContentBody_cbTaxonomy_5').attr('checked', true);
+                            break;
+                            case "Virtual+Cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_2').attr('checked', true);
+                            break;
+                            case "Webcam+Cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_7').attr('checked', true);
+                            break;
+                            case "Wherigo+Cache":
+                                $('#ctl00_ContentBody_cbTaxonomy_10').attr('checked', true);
+                            break;
+
+                            default:
+                                if(cachetype[i] != ""){
+                                    alert("Unknown cachetype. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
+                                }
+                        }
+
+                        $('#ctl00_ContentBody_rbTypeSelect').attr('checked', true);
                     }
                 }
 
