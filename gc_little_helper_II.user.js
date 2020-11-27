@@ -1000,7 +1000,6 @@ var mainPGC = function() {
                                 var new_url = "https://www.geocaching.com/pocket/gcquery.aspx?"+$.param( param );
 
                                 if(new_url.length > 2000){
-                                    alert("The URL is too long! Please use fewer countries/regions or you can't use this funciton. Some of the PQs could already be created!");
                                     alert("The URL is too long! Please use fewer options or you can't use this funciton. Some of the PQs could already be created!");
                                     return false;
                                 }else{
@@ -4559,6 +4558,8 @@ var mainGC = function() {
                             case "Virtual":
                                 $('#ctl00_ContentBody_cbContainers_2').attr('checked', true);
                             break
+                            default:
+                                alert("Unknown cachesize. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
                         }
 
                         $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
