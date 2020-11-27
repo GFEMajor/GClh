@@ -860,9 +860,9 @@ var mainPGC = function() {
 
             var error_text = '';
 
-            if($('#inputlist li').length > 1){
-                error_text = "More than one filter was set! You can not use this function. Please remove all filters except country/region.";
-            }
+            // if($('#inputlist li').length > 1){
+            //     error_text = "More than one filter was set! You can not use this function. Please remove all filters except country/region.";
+            // }
 
             if($('#multi_countryselect').val() != null){
                 name = $('#multi_countryselect').val();
@@ -872,6 +872,12 @@ var mainPGC = function() {
                 type = "region";
             }else{
                 error_text = 'No Country/Region selected.';
+            }
+
+            if($('#sizeselect').val() != null){
+                cachesize = $('#sizeselect').val();
+            }else{
+                cachesize = [];
             }
 
             $('.row table').each(function(table_index){
@@ -976,6 +982,7 @@ var mainPGC = function() {
                                         n: pq_name,
                                         t: type,
                                         s: name,
+                                        cs: cachesize.join("_"),
                                         c: cache_count,
                                         ho: how_often,
                                         e: email,
@@ -994,6 +1001,7 @@ var mainPGC = function() {
 
                                 if(new_url.length > 2000){
                                     alert("The URL is too long! Please use fewer countries/regions or you can't use this funciton. Some of the PQs could already be created!");
+                                    alert("The URL is too long! Please use fewer options or you can't use this funciton. Some of the PQs could already be created!");
                                     return false;
                                 }else{
                                     urls_for_pqs_to_create.push(new_url);
@@ -4521,6 +4529,40 @@ var mainGC = function() {
                    default:
                         alert('Unknown Type for area. Please contact an admin of GClh.');
                         throw new Error('unknown Type: ' + type);
+                }
+
+                var cachesize = findGetParameter('cs');
+                // Modifiction for Countries with "," in the name. There is a "+" after the ","
+                cachesize = cachesize.split(/_/);
+
+                if(cachesize.length >= 1){
+                    for (var i = 0; i < cachesize.length; i++) {
+                        switch (cachesize[i]){
+                            case "Large":
+                                $('#ctl00_ContentBody_cbContainers_3').attr('checked', true);
+                            break
+                            case "Micro":
+                                $('#ctl00_ContentBody_cbContainers_5').attr('checked', true);
+                            break
+                            case "Not+chosen":
+                                $('#ctl00_ContentBody_cbContainers_6').attr('checked', true);
+                            break
+                            case "Other":
+                                $('#ctl00_ContentBody_cbContainers_1').attr('checked', true);
+                            break
+                            case "Regular":
+                                $('#ctl00_ContentBody_cbContainers_4').attr('checked', true);
+                            break
+                            case "Small":
+                                $('#ctl00_ContentBody_cbContainers_0').attr('checked', true);
+                            break
+                            case "Virtual":
+                                $('#ctl00_ContentBody_cbContainers_2').attr('checked', true);
+                            break
+                        }
+
+                        $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
+                    }
                 }
 
                 $('#ctl00_ContentBody_rbPlacedBetween').attr('checked', true);
