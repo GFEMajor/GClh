@@ -4538,7 +4538,6 @@ var mainGC = function() {
                 }
 
                 var cachesize = findGetParameter('cs');
-                // Modifiction for Countries with "," in the name. There is a "+" after the ","
                 cachesize = cachesize.split(/_/);
 
                 if(cachesize.length >= 1){
@@ -4566,7 +4565,9 @@ var mainGC = function() {
                                 $('#ctl00_ContentBody_cbContainers_2').attr('checked', true);
                             break
                             default:
-                                alert("Unknown cachesize. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
+                                if(cachesize[i] != ""){
+                                    alert("Unknown cachesize. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
+                                }
                         }
 
                         $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
