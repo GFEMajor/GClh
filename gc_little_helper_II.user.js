@@ -877,14 +877,67 @@ var mainPGC = function() {
             if($('#typeselect').val() != null){
                 cachetype = $('#typeselect').val();
             }else{
-                cachetype = [];
+                cachetype = false;
             }
 
             if($('#sizeselect').val() != null){
                 cachesize = $('#sizeselect').val();
             }else{
-                cachesize = [];
+                cachesize = false;
             }
+
+            if($('#difficultyselect').val() != null){
+                difficulty = $('#difficultyselect').val();
+
+                if(difficulty.length > 1){
+                    error_text += "You selected more than one value. Difficulty is only working if you just set one value.";
+                }
+
+            }else{
+                difficulty = false;
+            }
+
+            if($('#terrainselect').val() != null){
+                terrain = $('#terrainselect').val();
+
+                if(terrain.length > 1){
+                    error_text += "You selected more than one value. Terrain is only working if you just set one value.";
+                }
+            }else{
+                terrain = false;
+            }
+
+            // if($('#hidden_fromyyyy').val() != null){
+            //     hidden_from = $('#hidden_fromyyyy').val();
+            //     if($('#hidden_frommm').val() == null){
+            //         hidden_from += "0101";
+            //     }else{
+            //         hidden_from += $('#hidden_frommm').val();
+            //         if($('#hidden_fromdd').val() == null){
+            //             hidden_from += "01";
+            //         }else{
+            //             hidden_from += $('#hidden_fromdd').val();
+            //         }
+            //     }
+            // }else{
+            //     hidden_from = false;
+            // }
+
+            // if($('#hidden_toyyyy').val() != null){
+            //     hidden_to = $('#hidden_toyyyy').val();
+            //     if($('#hidden_tomm').val() == null){
+            //         hidden_to += "0101";
+            //     }else{
+            //         hidden_to += $('#hidden_tomm').val();
+            //         if($('#hidden_todd').val() == null){
+            //             hidden_to += "01";
+            //         }else{
+            //             hidden_to += $('#hidden_todd').val();
+            //         }
+            //     }
+            // }else{
+            //     hidden_to = false;
+            // }
 
             $('.row table').each(function(table_index){
                 var tfoot = document.createElement('tfoot');
@@ -986,10 +1039,7 @@ var mainPGC = function() {
                                     {
                                         PQSplit: 1,
                                         n: pq_name,
-                                        t: type,
-                                        s: name,
-                                        ct: cachetype.join("_"),
-                                        cs: cachesize.join("_"),
+
                                         c: cache_count,
                                         ho: how_often,
                                         e: email,
@@ -1003,6 +1053,40 @@ var mainPGC = function() {
                                         ey: end_year
 
                                     };
+
+                                if(type != false){
+                                    param["t"] = type;
+                                }
+                                
+                                if(name != false){
+                                    param["s"] = name;
+                                }
+
+                                if(cachetype != false){
+                                    param["ct"] = cachetype.join("_");
+                                }
+
+                                if(cachesize != false){
+                                    param["cs"] = cachesize.join("_");
+                                }
+
+                                if(terrain != false){
+                                    param["g"] = terrain.join("_");
+                                }
+
+                                if(difficulty != false){
+                                    param["d"] = difficulty.join("_");
+                                }
+
+                                // if(hidden_from != false){
+                                //     param[hf]: hidden_from;
+                                // }
+
+                                // if(hidden_to != false){
+                                //     param[ht]: hidden_to;
+                                // }
+
+                                console.log(param);
 
                                 var new_url = "https://www.geocaching.com/pocket/gcquery.aspx?"+$.param( param );
 
@@ -4481,158 +4565,206 @@ var mainGC = function() {
                     }
                 }
 
-                var type = findGetParameter('t');
-                var cr_name = findGetParameter('s');
-                switch (type) {
-                    case "region":
-                        // Modifiction for Countries with "," in the name. There is a "+" after the ","
-                        cr_name = cr_name.split(/,(?!\+)/);
 
-                        if(cr_name.length >= 1){
-                            for (var i = 0; i < cr_name.length; i++) {
-                                cr_name[i] = cr_name[i].replace(/\+/g, " ");
+                if(findGetParameter('t') && findGetParameter('s')){
+                    var type = findGetParameter('t');
+                    var cr_name = findGetParameter('s');
+                    switch (type) {
+                        case "region":
+                            // Modifiction for Countries with "," in the name. There is a "+" after the ","
+                            cr_name = cr_name.split(/,(?!\+)/);
 
-                                var region = cr_name[i].substr(cr_name[i].indexOf('|')+1);
+                            if(cr_name.length >= 1){
+                                for (var i = 0; i < cr_name.length; i++) {
+                                    cr_name[i] = cr_name[i].replace(/\+/g, " ");
 
-                                var state = $.grep(states_id, function(e){return e.n == region;});
+                                    var region = cr_name[i].substr(cr_name[i].indexOf('|')+1);
 
-                                if(state.length == 0){
-                                    alert('No corresponding Region Name not found for Region: ' + region);
-                                    throw Error('No corresponding Region Name not found for Region: ' + region);
+                                    var state = $.grep(states_id, function(e){return e.n == region;});
+
+                                    if(state.length == 0){
+                                        alert('No corresponding Region Name not found for Region: ' + region);
+                                        throw Error('No corresponding Region Name not found for Region: ' + region);
+                                    }
+
+                                    $('#ctl00_ContentBody_rbStates').attr('checked', true);
+                                    $('#ctl00_ContentBody_lbStates option[value=' + state[0].id + ']').attr('selected', true);
                                 }
-
-                                $('#ctl00_ContentBody_rbStates').attr('checked', true);
-                                $('#ctl00_ContentBody_lbStates option[value=' + state[0].id + ']').attr('selected', true);
+                            }else{
+                                alert('No Region Name found.');
+                                throw Error('No Region Name found.');
                             }
-                        }else{
-                            alert('No Region Name found.');
-                            throw Error('No Region Name found.');
-                        }
-                        break;
+                            break;
 
-                    case "country":
-                        // Modifiction for Countries with "," in the name. There is a "+" after the ","
-                        cr_name = cr_name.split(/,(?!\+)/);
-                        if(cr_name.length >= 1){
-                            for (var i = 0; i < cr_name.length; i++) {
-                                cr_name[i] = cr_name[i].replace(/\+/g, " ");
+                        case "country":
+                            // Modifiction for Countries with "," in the name. There is a "+" after the ","
+                            cr_name = cr_name.split(/,(?!\+)/);
+                            if(cr_name.length >= 1){
+                                for (var i = 0; i < cr_name.length; i++) {
+                                    cr_name[i] = cr_name[i].replace(/\+/g, " ");
 
-                                var country = $.grep(country_id, function(e){return e.n == cr_name[i];});
+                                    var country = $.grep(country_id, function(e){return e.n == cr_name[i];});
 
-                                if(country.length == 0){
-                                    alert('No corresponding Country Name found for Country: ' + cr_name[i]);
-                                    throw Error('No corresponding Country Name found for Country: ' + cr_name[i]);
+                                    if(country.length == 0){
+                                        alert('No corresponding Country Name found for Country: ' + cr_name[i]);
+                                        throw Error('No corresponding Country Name found for Country: ' + cr_name[i]);
+                                    }
+
+                                    $('#ctl00_ContentBody_rbCountries').attr('checked', true);
+                                    $('#ctl00_ContentBody_lbCountries option[value=' + country[0].id + ']').attr('selected', true);
                                 }
-
-                                $('#ctl00_ContentBody_rbCountries').attr('checked', true);
-                                $('#ctl00_ContentBody_lbCountries option[value=' + country[0].id + ']').attr('selected', true);
+                            }else{
+                                alert('No Country Name found.');
+                                throw Error('No Country Name found.');
                             }
-                        }else{
-                            alert('No Country Name found.');
-                            throw Error('No Country Name found.');
-                        }
-                        break;
-                   default:
-                        alert('Unknown Type for area. Please contact an admin of GClh.');
-                        throw new Error('unknown Type: ' + type);
+                            break;
+                       default:
+                            alert('Unknown Type for area. Please contact an admin of GClh.');
+                            throw new Error('unknown Type: ' + type);
+                    }
                 }
+                
 
-                var cachesize = findGetParameter('cs');
-                cachesize = cachesize.split(/_/);
+                if(findGetParameter('cs')){
+                    var cachesize = findGetParameter('cs');
+                    cachesize = cachesize.split(/_/);
 
-                if(cachesize.length >= 1){
-                    for (var i = 0; i < cachesize.length; i++) {
-                        switch (cachesize[i]){
-                            case "Large":
-                                $('#ctl00_ContentBody_cbContainers_3').attr('checked', true);
-                            break
-                            case "Micro":
-                                $('#ctl00_ContentBody_cbContainers_5').attr('checked', true);
-                            break
-                            case "Not+chosen":
-                                $('#ctl00_ContentBody_cbContainers_6').attr('checked', true);
-                            break
-                            case "Other":
-                                $('#ctl00_ContentBody_cbContainers_1').attr('checked', true);
-                            break
-                            case "Regular":
-                                $('#ctl00_ContentBody_cbContainers_4').attr('checked', true);
-                            break
-                            case "Small":
-                                $('#ctl00_ContentBody_cbContainers_0').attr('checked', true);
-                            break
-                            case "Virtual":
-                                $('#ctl00_ContentBody_cbContainers_2').attr('checked', true);
-                            break
-                            default:
-                                if(cachesize[i] != ""){
-                                    alert("Unknown cachesize. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
-                                }
+                    if(cachesize.length >= 1){
+                        for (var i = 0; i < cachesize.length; i++) {
+                            switch (cachesize[i]){
+                                case "Large":
+                                    $('#ctl00_ContentBody_cbContainers_3').attr('checked', true);
+                                break
+                                case "Micro":
+                                    $('#ctl00_ContentBody_cbContainers_5').attr('checked', true);
+                                break
+                                case "Not+chosen":
+                                    $('#ctl00_ContentBody_cbContainers_6').attr('checked', true);
+                                break
+                                case "Other":
+                                    $('#ctl00_ContentBody_cbContainers_1').attr('checked', true);
+                                break
+                                case "Regular":
+                                    $('#ctl00_ContentBody_cbContainers_4').attr('checked', true);
+                                break
+                                case "Small":
+                                    $('#ctl00_ContentBody_cbContainers_0').attr('checked', true);
+                                break
+                                case "Virtual":
+                                    $('#ctl00_ContentBody_cbContainers_2').attr('checked', true);
+                                break
+                                default:
+                                    if(cachesize[i] != ""){
+                                        alert("Unknown cachesize. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
+                                    }
+                            }
+
+                            $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
                         }
+                    }
+                }
+                
+                if(findGetParameter('ct')){
+                    var cachetype = findGetParameter('ct');
+                    cachetype = cachetype.split(/_/);
 
-                        $('#ctl00_ContentBody_rbContainerSelect').attr('checked', true);
+                    if(cachetype.length >= 1){
+                        for (var i = 0; i < cachetype.length; i++) {
+                            switch (cachetype[i]){
+                                case "Cache+In+Trash+Out+Event":
+                                case "Event+Cache":
+                                case "Giga-Event+Cache":
+                                case "Groundspeak+Block+Party":
+                                case "Mega-Event+Cache":
+                                case "Lost+and+Found+Event+Cache":
+                                case "Groundspeak+Lost+and+Found+Celebration":
+                                    $('#ctl00_ContentBody_cbTaxonomy_4').attr('checked', true);
+                                break;
+                                case "Earthcache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_8').attr('checked', true);
+                                break;
+                                case "GPS+Adventures+Exhibit":
+                                    $('#ctl00_ContentBody_cbTaxonomy_9').attr('checked', true);
+                                break;
+                                case "Letterbox+Hybrid":
+                                    $('#ctl00_ContentBody_cbTaxonomy_3').attr('checked', true);
+                                break;
+                                case "Locationless+(Reverse)+Cache":
+                                    // Not mapped
+                                break;
+                                case "Multi-cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_1').attr('checked', true);
+                                break;
+                                case "Project+APE+Cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_6').attr('checked', true);
+                                break;
+                                case "Traditional+Cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_0').attr('checked', true);
+                                break;
+                                case "Unknown+Cache":
+                                case "Groundspeak+HQ":
+                                    $('#ctl00_ContentBody_cbTaxonomy_5').attr('checked', true);
+                                break;
+                                case "Virtual+Cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_2').attr('checked', true);
+                                break;
+                                case "Webcam+Cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_7').attr('checked', true);
+                                break;
+                                case "Wherigo+Cache":
+                                    $('#ctl00_ContentBody_cbTaxonomy_10').attr('checked', true);
+                                break;
+
+                                default:
+                                    if(cachetype[i] != ""){
+                                        alert("Unknown cachetype. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
+                                    }
+                            }
+
+                            $('#ctl00_ContentBody_rbTypeSelect').attr('checked', true);
+                        }
                     }
                 }
 
-                var cachetype = findGetParameter('ct');
-                cachetype = cachetype.split(/_/);
+                if(findGetParameter("d")){
+                    difficulty = findGetParameter("d");
+                    difficulty = difficulty.replace(".0","");
+                    // Could only be one!
+                    $('#ctl00_ContentBody_cbDifficulty').attr('checked', true);
+                    
+                    for(var i=0; i < document.getElementById('ctl00_ContentBody_ddDifficulty').options.length; i++)
+                    {
+                      if(document.getElementById('ctl00_ContentBody_ddDifficulty').options[i].value == "=")
+                        document.getElementById('ctl00_ContentBody_ddDifficulty').selectedIndex = i;
+                    }
 
-                if(cachetype.length >= 1){
-                    for (var i = 0; i < cachetype.length; i++) {
-                        switch (cachetype[i]){
-                            case "Cache+In+Trash+Out+Event":
-                            case "Event+Cache":
-                            case "Giga-Event+Cache":
-                            case "Groundspeak+Block+Party":
-                            case "Mega-Event+Cache":
-                            case "Lost+and+Found+Event+Cache":
-                            case "Groundspeak+Lost+and+Found+Celebration":
-                                $('#ctl00_ContentBody_cbTaxonomy_4').attr('checked', true);
-                            break;
-                            case "Earthcache":
-                                $('#ctl00_ContentBody_cbTaxonomy_8').attr('checked', true);
-                            break;
-                            case "GPS+Adventures+Exhibit":
-                                $('#ctl00_ContentBody_cbTaxonomy_9').attr('checked', true);
-                            break;
-                            case "Letterbox+Hybrid":
-                                $('#ctl00_ContentBody_cbTaxonomy_3').attr('checked', true);
-                            break;
-                            case "Locationless+(Reverse)+Cache":
-                                // Not mapped
-                            break;
-                            case "Multi-cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_1').attr('checked', true);
-                            break;
-                            case "Project+APE+Cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_6').attr('checked', true);
-                            break;
-                            case "Traditional+Cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_0').attr('checked', true);
-                            break;
-                            case "Unknown+Cache":
-                            case "Groundspeak+HQ":
-                                $('#ctl00_ContentBody_cbTaxonomy_5').attr('checked', true);
-                            break;
-                            case "Virtual+Cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_2').attr('checked', true);
-                            break;
-                            case "Webcam+Cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_7').attr('checked', true);
-                            break;
-                            case "Wherigo+Cache":
-                                $('#ctl00_ContentBody_cbTaxonomy_10').attr('checked', true);
-                            break;
-
-                            default:
-                                if(cachetype[i] != ""){
-                                    alert("Unknown cachetype. Please create an issue at: https://github.com/2Abendsegler/GClh/issues");
-                                }
-                        }
-
-                        $('#ctl00_ContentBody_rbTypeSelect').attr('checked', true);
+                    for(var i=0; i < document.getElementById('ctl00_ContentBody_ddDifficultyScore').options.length; i++)
+                    {
+                      if(document.getElementById('ctl00_ContentBody_ddDifficultyScore').options[i].value == difficulty)
+                        document.getElementById('ctl00_ContentBody_ddDifficultyScore').selectedIndex = i;
                     }
                 }
+
+                if(findGetParameter("g")){
+                    terrain = findGetParameter("g");
+                    terrain = terrain.replace(".0","");
+                    // Could only be one!
+                    $('#ctl00_ContentBody_cbTerrain').attr('checked', true);
+                    
+                    for(var i=0; i < document.getElementById('ctl00_ContentBody_ddTerrain').options.length; i++)
+                    {
+                      if(document.getElementById('ctl00_ContentBody_ddTerrain').options[i].value == "=")
+                        document.getElementById('ctl00_ContentBody_ddTerrain').selectedIndex = i;
+                    }
+
+                    for(var i=0; i < document.getElementById('ctl00_ContentBody_ddTerrainScore').options.length; i++)
+                    {
+                      if(document.getElementById('ctl00_ContentBody_ddTerrainScore').options[i].value == terrain)
+                        document.getElementById('ctl00_ContentBody_ddTerrainScore').selectedIndex = i;
+                    }
+                }
+
+                
 
                 $('#ctl00_ContentBody_rbPlacedBetween').attr('checked', true);
 
